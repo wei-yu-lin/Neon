@@ -9,11 +9,11 @@ const UserRegsiter = (req) => {
       if (connectionError) {
         reject(connectionError) // 若連線有問題回傳錯誤
       } else {
-        let regsiter_username = req.body['username']
+        let regsiter_user_id = req.body['user_id']
         let regsiter_password = bcrypt.hashSync(req.body['password'], 10)
-        let data = [regsiter_username, regsiter_password ]
+        let data = [regsiter_user_id, regsiter_password ]
         connection.query( // User撈取所有欄位的值組
-          'INSERT INTO userdata (username,password) VALUES (?,?)', data, (error, result) => {
+          'INSERT INTO userdata (user_id,password) VALUES (?,?)', data, (error, result) => {
             if (error) {
               if (error.code === 'ER_DUP_ENTRY') {
                 resolve('帳號已註冊')

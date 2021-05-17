@@ -6,16 +6,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link :class="{'nav-link': true, active: isActive.Login}" :to="{name:'Login'}">登入</router-link>
+              <router-link :class="{'nav-link': true, active: isActive.HomePage}" :to="{name:'HomePage'}">首頁</router-link>
             </li>
             <li class="nav-item">
               <router-link :class="{'nav-link':true , active: isActive.About}" :to="{name:'About'}">介紹</router-link>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <login
+          :LoginCookies="wannalogin"
+          />
         </div>
       </div>
     </nav>
@@ -24,34 +23,44 @@
 </template>
 
 <script>
+import login from './views/LoginLogout.vue'
+
 export default({
   data() {
     return{
       isActive:{
-        Login: false,
+        HomePage: false,
         About: false
       }
     }
   },
   computed:{
+    wannalogin(){
+      return this.$store.state.wannalogin
+    }
   },
   watch:{
     $route:{
       handler: function(Val,oldVal){
-        // console.log("Val=",Val.name,"oldVal=",oldVal);
-        if (Val.name === 'Login'){
-          this.isActive.Login = true
+        // console.log("Val=",Val.name,"oldVal=",oldVal);w
+        if (Val.name === 'HomePage'){
+          this.isActive.HomePage = true
           this.isActive.About = false
         }
-        else{
+        else if(Val.name === 'About'){
           this.isActive.About = true
-          this.isActive.Login = false
+          this.isActive.HomePage = false
         }
-      },
-      deep: true
-    }
-
+        else{
+          this.isActive.HomePage = false
+          this.isActive.About = false
+        }
+      }
+    },
   },
+  components:{
+    login
+  }
 })
 </script>
 

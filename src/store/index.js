@@ -5,6 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    wannalogin: true,
+    user: {
+      user_id: '',
+      password: '',
+      username:'',
+      token:''
+    }
   },
   mutations: {
   },
