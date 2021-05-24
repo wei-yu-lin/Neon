@@ -12,3 +12,10 @@ Content-Type: application/json
 
 {"username":"qwe@gmail.com","password":"qwe"}
 
+###
+POST https://a8b18f6b7615.ngrok.io/api/users/new HTTP/1.1
+Content-Type: application/json
+
+{
+  "email":"qwe@gmail.com","password":"qwe","name":"林帥哥","sex":1,"age":18,"addr": "台北市信義區松高路68號"
+}

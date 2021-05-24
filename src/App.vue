@@ -23,7 +23,8 @@
 </template>
 
 <script>
-import login from './views/LoginLogout.vue'
+import login from '@/components/MemberSystem/LoginLogout.vue'
+import { mapActions } from 'vuex'
 
 export default({
   data() {
@@ -60,7 +61,13 @@ export default({
   },
   components:{
     login
-  }
+  },
+  mounted() {
+    if (this.$cookies.get('login')) {
+      this.$store.dispatch('readUser')
+    }
+  },
+
 })
 </script>
 
@@ -73,5 +80,6 @@ export default({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
 }
 </style>

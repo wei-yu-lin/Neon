@@ -4,7 +4,7 @@
         :to="{ name: 'LoginForm'}">登入</router-link>
         <div v-else class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            {{this.$store.state.user.username }}歡迎
+            {{$store.state.user.username }}歡迎
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
             <li>
@@ -20,8 +20,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  name: 'Login',
+  name: 'LoginLogout',
   components: {
   },
   data() {
@@ -31,7 +33,7 @@ export default {
   methods:{
     LogOut(){
       this.$cookies.remove('login');
-      this.$store.state.wannalogin = true;
+      this.$store.commit('SET_STATUS',true)
     }
   },
   props:{
@@ -39,15 +41,6 @@ export default {
       type: Boolean,
       default: true
     }
-  },
-  beforeMount:
-    function () {
-      if (this.$cookies.get('login')) {
-        this.$store.state.wannalogin = false
-        this.$store.state.user.username = this.$cookies.get('login').username
-        this.$store.state.user.user_id = this.$cookies.get('login').user_id
-        this.$store.state.user.password = this.$cookies.get('login').password
-      }
-    }
+  }
 }
 </script>

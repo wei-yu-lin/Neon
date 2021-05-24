@@ -2,7 +2,7 @@
   <div class="container">
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">姓名</span>
-      <input type="text" class="form-control" aria-label="使用者名稱" :value="this.$store.state.user.username">
+      <input type="text" class="form-control" aria-label="使用者名稱" :value="$store.state.user.username">
     </div>
 
     <div class="input-group mb-3">

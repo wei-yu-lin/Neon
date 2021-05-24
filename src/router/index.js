@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Cookies from 'vue-cookies'
-import LoginForm from '@/components/MemberSystem/LoginForm.vue'
-import Profile from '@/components/MemberSystem/Profile.vue'
+import LoginForm from '@/views/LoginForm.vue'
 import HomePage from '@/views/HomePage.vue'
+import Profile from '@/components/MemberSystem/Profile.vue'
 
 Vue.use(VueRouter)
 
