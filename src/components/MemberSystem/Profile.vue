@@ -1,55 +1,68 @@
 <template>
-  <div class="container">
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1">姓名</span>
-      <input type="text" class="form-control" aria-label="使用者名稱" :value="$store.state.user.username">
+  <form class="container">
+    
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">帳號</label>
+        <div class="col-9 col-sm-6">
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="帳號" v-model="profile_userId">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <select class="form-select" aria-label="select email">
+              <option value="@gmail.com">gmail</option>
+              <option value="@yahoo.com.tw">yahoo</option>
+            </select>
+          </div>
+        </div>
     </div>
-
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="使用者帳號">
-      <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">密碼</label>
+        <div class="col-9 col-sm-6">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">姓氏</span>
+            <input type="text" class="form-control" aria-label="使用者名稱" :value="$store.state.user.username">
+            <span class="input-group-text" id="basic-addon1">名子</span>
+            <input type="text" class="form-control" aria-label="使用者名稱" :value="$store.state.user.username">
+          </div>
+        </div>
     </div>
-
-    <label for="basic-url" class="form-label">Your vanity URL</label>
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    <div class="row">
+        <label class="col-sm-3 col-form-label text-primary">使用者名稱</label>
+        <div class="col-9 col-sm-3">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">名子</span>
+            <input type="text" class="form-control" aria-label="使用者名稱" :value="user.username">
+          </div>
+        </div>
     </div>
-
-    <div class="input-group mb-3">
-      <span class="input-group-text">$</span>
-      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-      <span class="input-group-text">.00</span>
-    </div>
-
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-      <span class="input-group-text">@</span>
-      <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-    </div>
-
-    <div class="input-group">
-      <span class="input-group-text">With textarea</span>
-      <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
-  </div>
+  </form>
 </template>
 
 <script>
 export default {
   name: 'Profile',
+  data() {
+    return {
+      user:{},
+    }
+  },
   props: {
   },
   methods: {
   },
   computed:{
-    SpliceId:{
+    profile_userId:{
       get(){
-        const db_userid = this.$store.state.user.user_id;
-        console.log(db_userid.splice());
+        const userId = this.user.user_id 
+        if (userId){
+          
+        }
 
+        return 
       }
     }
-  }
+  },
+  mounted() {
+    this.user = this.$store.state.user
+  },
 }
 </script>

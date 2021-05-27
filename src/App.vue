@@ -62,12 +62,11 @@ export default({
   components:{
     login
   },
-  mounted() {
+  created() {
     if (this.$cookies.get('login')) {
       this.$store.dispatch('readUser')
     }
   },
-
 })
 </script>
 
