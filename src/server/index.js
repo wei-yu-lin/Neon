@@ -1,7 +1,8 @@
+const express = require('express')
 const loginApi = require('./member_login/login_auth')
 const RegsiterApi = require('./member_login/Regsiter_auth')
+
 const bodyParser = require('body-parser') // post 資料是需要
-const express = require('express')
 const app = express()
 app.use(bodyParser.json())
 // 後端api路由

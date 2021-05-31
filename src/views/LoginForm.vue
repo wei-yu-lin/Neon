@@ -45,10 +45,12 @@ export default {
   },
   methods: {
     signin () {
-      let re = /gmail.com$/
+      let re = ".com"
       const token = 'asds32adsavrAS3Fadf5567'
       const user_id = this.user.user_id
       const password = this.user.password
+      console.log(user_id.search(re));
+
       if (user_id.search(re) > 0) {
         this.$http.post(process.env.VUE_APP_LOGIN, {
           user_id: user_id,
@@ -68,7 +70,12 @@ export default {
             this.$cookies.set('login', JSON.stringify(this.$store.state.user))
             this.$router.push({name: 'About'})
           }
+        },(reject) =>{
+          console.log(reject);
+
         })
+      } else {
+        alert('格式不合規定')
       }
     },
   }
