@@ -1,33 +1,44 @@
 <template>
 <div  class="row justify-content-center align-items-center vh-100">
-  <div class="col-6">
-    <div class="card">
+  <div class="card text-center w-50">
       <h5 class="card-header">
         會員登入
       </h5>
-      <div class="card-body ">
+      <div class="card-body">
         <form  @submit.prevent="signin">
-            <div class="form-floating row justify-content-center mb-3">
-              <input class="form-control w-75 "
-              placeholder="name@example.com"
-              v-model="user.user_id"
-              >
-              <label for="floatingInput">Email帳號</label>
+
+           <div class="list-group list-group-flush">
+
+                <div class="form-floating row justify-content-center mb-3">
+                  <input class="form-control w-75 "
+                  placeholder="name@example.com"
+                  v-model="user.user_id"
+                  >
+                  <label for="floatingInput">Email帳號</label>
+                </div>
+
+              
+                <div class="form-floating row justify-content-center  mb-3">
+                  <input type="password"
+                  class="form-control w-75 "
+                  placeholder="Password"
+                  v-model="user.password"
+                  >
+                  <label for="floatingPassword">Password</label>
+                </div>
+             
+
+           
+
             </div>
-            <div class="form-floating row justify-content-center  mb-3">
-              <input type="password"
-              class="form-control w-75 "
-              placeholder="Password"
-              v-model="user.password"
-              >
-              <label for="floatingPassword">Password</label>
+            <div class="card-footer">
+              <input type="submit" class="btn btn-primary" value="Submit">
             </div>
-            <input type="submit" class="btn btn-primary" value="Submit">
           </form>
       </div>
     </div>
   </div>
-</div>
+
 </template>
 
 <script>
@@ -72,7 +83,6 @@ export default {
           }
         },(reject) =>{
           console.log(reject);
-
         })
       } else {
         alert('格式不合規定')

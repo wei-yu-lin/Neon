@@ -4,6 +4,8 @@ import Cookies from 'vue-cookies'
 import LoginForm from '@/views/LoginForm.vue'
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
+import AddHotel from '@/components/CMS/Contents/AddHotel.vue'
+
 
 Vue.use(VueRouter)
 
@@ -28,10 +30,17 @@ const routes = [
     component: Profile
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta: { requireAuth: true }
+    path: '/Management',
+    name: 'Management',
+    component: () => import('../views/Management.vue'),
+    meta: { requireAuth: true },
+    children: [
+        {
+          path: '/Management/insert',
+          name: 'AddHotel',
+          component: AddHotel
+        }
+      ]
   }
 ]
 
