@@ -4,7 +4,7 @@ import Cookies from 'vue-cookies'
 import LoginForm from '@/views/LoginForm.vue'
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
-import AddHotel from '@/components/CMS/Contents/AddHotel.vue'
+import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
 
 
 Vue.use(VueRouter)
@@ -36,9 +36,9 @@ const routes = [
     meta: { requireAuth: true },
     children: [
         {
-          path: '/Management/insert',
-          name: 'AddHotel',
-          component: AddHotel
+          path: 'CMS/Photo',
+          name: 'CarouselPhoto',
+          component: CarouselPhoto
         }
       ]
   }

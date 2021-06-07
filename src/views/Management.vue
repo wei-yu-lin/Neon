@@ -2,23 +2,18 @@
 
     <div class="row">
       <ScrollBar/>
-      <AddHotel/>
-      
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <router-view></router-view>
+      </main>
     </div>
 
 </template>
 
 <script>
 import ScrollBar from '@/components/CMS/ScrollBar.vue'
-import AddHotel from '@/components/CMS/Contents/AddHotel.vue'
 export default ({
   components: {
-    ScrollBar,
-    AddHotel
+    ScrollBar
   }
 })
 </script>
-
-<style lang="scss" scoped>
-  @import  "@/assets/helpers/_dashboard.scss";
-</style>

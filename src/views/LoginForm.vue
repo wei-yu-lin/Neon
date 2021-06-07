@@ -79,7 +79,7 @@ export default {
               }
             })
             this.$cookies.set('login', JSON.stringify(this.$store.state.user))
-            this.$router.push({name: 'About'})
+            this.$router.push({name: 'Management'})
           }
         },(reject) =>{
           console.log(reject);

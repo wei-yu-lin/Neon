@@ -1,23 +1,25 @@
 <template>
   <div id="app">
-    <nav class=" navbar navbar-expand-lg sticky-top navbar-light bg-light shadow">
-      <div class="container-fluid ">
-        <a class="navbar-brand" href="#">Neon</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <router-link :class="{'nav-link': true, active: isActive.HomePage}" :to="{name:'HomePage'}">首頁</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :class="{'nav-link':true , active: isActive.Management}" :to="{name:'Management'}">後臺管理</router-link>
-            </li>
-          </ul>
-          <login
-          :LoginCookies="wannalogin"
-          />
+    <header class="sticky-top">
+      <nav class=" navbar navbar-expand-lg navbar-light bg-light shadow">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="#">Neon</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <router-link :class="{'nav-link': true, active: isActive.HomePage}" :to="{name:'HomePage'}">首頁</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link :class="{'nav-link':true , active: isActive.Management}" :to="{name:'Management'}">後臺管理</router-link>
+              </li>
+            </ul>
+            <login
+            :LoginCookies="wannalogin"
+            />
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
     <router-view/>
   </div>
 </template>
