@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item,index) in main" :key="item+index">
+        <tr v-for="(item,index) in main" :key="index+item">
           <th class="col-1" scope="row">{{index}}</th>
           <td class="col-3">
             <img class="img-thumbnail" :src="item.Picture1">
@@ -21,19 +21,20 @@
               <textarea class="form-control overflow-auto" rows="7" v-model="item.Description"></textarea>
           </td>
           <td class="col-2">
-            <div class="container">
+           <div class="container">
                 <button class="btn btn-info" type="button"
                 data-bs-toggle="modal"
-                data-bs-target="#modifyData"
-                @click="WWW">修改</button>
-                <button class="btn btn-danger" type="button">刪除</button>
-            </div>
-          </td>          
+                data-bs-target="#id_modifyData"
+                >修改</button>
+                <button class="btn btn-danger" type="button">刪除</button>     
+           </div>      
+          <CarouseModal
+          :modify-modal=item
+          />
+          </td>               
         </tr> 
       </tbody>
     </table>
-    <CarouseModal
-    />
   </div>
 </template>
 
@@ -42,22 +43,22 @@
 import test from '@/server/test.json'
 import CarouseModal from './CarouseModal.vue'
 
-
 export default ({
   data() {
     return {
-      main:[]
+      main:[],
+      modify:{}
     }
   },
   methods: {
-    WWW(){
-      var myModal = new bootstrap.Modal(document.getElementById('modifyData'), {
-        keyboard: false
-      })
+    modifyData(key){
+      this.modify = key
     }
   },
+  computed: {
+  },
   created() {
-    this.main = test
+    this.main = test     
   },
   components: {
     CarouseModal

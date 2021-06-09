@@ -4,16 +4,13 @@
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle col-12" type="button" data-bs-toggle="collapse" data-bs-target="#CMS">CMS</button>
           <div id="CMS" class="collapse multi-collapse" >
-            
-
-          <div class="list-group" id="list-tab">
-            <router-link class="list-group-item list-group-item-action text-center"  :to="{name: 'CarouselPhoto'}">輪播圖片管理</router-link>
-            <a class="list-group-item list-group-item-action" id="list-profile-list"  href="#list-profile" role="tab" >Profile</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list"  href="#list-messages" role="tab" >Messages</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list"  href="#list-settings" role="tab" >Settings</a>
-          </div>
-
-          </div >  
+            <div class="list-group" id="list-tab">
+              <router-link class="list-group-item list-group-item-action text-center"  :to="{name: 'CarouselPhoto'}">輪播圖片管理</router-link>
+              <a class="list-group-item list-group-item-action" id="list-profile-list"  href="#list-profile" role="tab" >Profile</a>
+              <a class="list-group-item list-group-item-action" id="list-messages-list"  href="#list-messages" role="tab" >Messages</a>
+              <a class="list-group-item list-group-item-action" id="list-settings-list"  href="#list-settings" role="tab" >Settings</a>
+            </div>
+          </div>  
         </div>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

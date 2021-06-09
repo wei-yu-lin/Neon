@@ -1,22 +1,3 @@
-//配置設定範例
-// module.exports = {
-//   devServer: {
-//     proxy: {
-//       '/api': {
-//         target: '<url>',
-//         ws: true,
-//         changeOrigin: true
-//       },
-//       '/foo': {
-//         target: '<other_url>'
-//       },
-//       pathRewrite: {
-//         '^/api': ''
-//       }
-//     }
-//   }
-// }
-
 module.exports = {
   devServer: {
     //以上的ip和埠號是我們本機的;下面為需要跨域的

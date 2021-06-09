@@ -1,9 +1,11 @@
 <template>
-  <div class="modal fade" id="modifyData" tabindex="-1">
+
+            
+  <div class="modal fade" id="id_modifyData" tabindex="-1">
      <div class="modal-dialog">
       <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title">New message</h5>
+          <h5 class="modal-title">修改資料</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
          <div class="modal-body">
@@ -25,16 +27,23 @@
         </div>
       </div>
     </div>
+    {{modifyModal.Add}}
   </div>
 </template>
 
 <script>
 export default ({
   props :{
-    ModifyModal:{
-      type: Object,
-      required: false
+    modifyModal:{
+      type: Object
     }
+  },
+  data(){
+    return{
+    }
+  },
+  computed:{    
   }
+
 })
 </script>
