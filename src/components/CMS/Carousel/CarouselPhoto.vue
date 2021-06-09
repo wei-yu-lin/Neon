@@ -24,15 +24,16 @@
            <div class="container">
                 <button class="btn btn-info" type="button"
                 data-bs-toggle="modal"
-                data-bs-target="#id_modifyData"
+                :data-bs-target="'#id_modifyData'+index"
                 >修改</button>
-                <button class="btn btn-danger" type="button">刪除</button>     
-           </div>      
+                <button class="btn btn-danger" type="button">刪除</button>
+           </div>
           <CarouseModal
           :modify-modal=item
+          :index=index
           />
-          </td>               
-        </tr> 
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
