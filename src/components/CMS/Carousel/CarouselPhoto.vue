@@ -26,7 +26,7 @@
                 data-bs-toggle="modal"
                 :data-bs-target="'#id_modifyData'+index"
                 >修改</button>
-                <button class="btn btn-danger" type="button">刪除</button>
+                <button class="btn btn-danger" type="button" @click="delData(index)">刪除</button>
            </div>
           <CarouseModal
           :modify-modal=item
@@ -47,13 +47,12 @@ import CarouseModal from './CarouseModal.vue'
 export default ({
   data() {
     return {
-      main:[],
-      modify:{}
+      main:[]
     }
   },
   methods: {
-    modifyData(key){
-      this.modify = key
+    delData(index){
+     this.main.splice(index,1)
     }
   },
   computed: {

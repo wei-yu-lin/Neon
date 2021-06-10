@@ -14,9 +14,22 @@
                 <div class="card-header text-center ">
                   <img :src="modifyModal.Picture1"
                   class="card-img-top mb-3">
-                  <button type="button"
-                  class="btn btn-outline-primary col-6"
-                  data-bs-toggle="button" autocomplete="off">Upload</button>
+                  <form class="row">
+                      <div class="col-auto">
+                        <input type="file"
+                        class="form-control"
+                        :id="'imagefile'+ index"
+                        ref="files"
+                        accept ="image/jpeg,image/png" 
+                        @change="uploadImage">
+                      </div>
+                      <div class="col">
+                        <button type="button"
+                        class="btn btn-outline-danger"
+                        data-bs-toggle="button"
+                        @click="cancelUpload">取消</button>
+                      </div>
+                  </form>
                 </div>
                 <div class="card-body">
                   <label class="col-form-label">圖片說明</label>
@@ -59,7 +72,18 @@ export default ({
     }
   },
   computed:{    
-  }
+  },
+  methods: {
+    uploadImage(){
+      const file = this.$refs.files.files[0];
+      const formData = new FormData();
+      formData.append('hihi', formData)
+      console.log(formData)
+    },
+    cancelUpload(){
+      console.log('1111')
+    }
+  },
 
 })
 </script>
