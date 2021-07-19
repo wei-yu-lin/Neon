@@ -32,7 +32,8 @@ export default {
   methods:{
     LogOut(){
       this.$cookies.remove('login');
-      this.$store.commit('SET_STATUS',true)
+      this.$store.commit('SET_STATUS',true);
+      this.$router.push({name:'LoginForm'})
     }
   },
   props:{

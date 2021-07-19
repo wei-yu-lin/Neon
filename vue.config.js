@@ -9,6 +9,14 @@ module.exports = {
         pathRewrite: {
           '^/auth': ''
         }
+      },
+      'get': {
+        target: 'http://localhost:5531/get',   //這裡後台的地址模擬的，應該填寫真實的後台api
+        ws: true,
+        changOrigin: true,  //允許跨域
+        pathRewrite: {
+          '^/get': ''
+        }
       }
     },
     host: 'localhost', // can be overwritten by process.env.HOST

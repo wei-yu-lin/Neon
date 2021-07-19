@@ -1,13 +1,10 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import {createRouter, createWebHashHistory} from 'vue-router'
 import Cookies from 'vue-cookies'
 import LoginForm from '@/views/LoginForm.vue'
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
 import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
 
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -25,28 +22,35 @@ const routes = [
     component: LoginForm
   },
   {
-    path: '/login/profile',
-    name: '個人資料',
-    component: Profile
-  },
-  {
     path: '/Management',
     name: 'Management',
     component: () => import('../views/Management.vue'),
     meta: { requireAuth: true },
     children: [
-        {
-          path: 'CMS/Photo',
-          name: 'CarouselPhoto',
-          component: CarouselPhoto
-        }
-      ]
+      {
+        path: 'CMS/Photo/Manage',
+        name: 'CarouselPhoto',
+        component: CarouselPhoto,
+        meta: { requireAuth: true }
+      },
+      {
+        path: 'CMS/Photo/Add',
+        name: 'AddPhoto',
+        component: () => import('../components/CMS/Carousel/AddPhoto.vue'),
+        meta: { requireAuth: true }
+      },
+      {
+        path: 'profile',
+        name: '個人資料',
+        component: Profile
+      },
+    ]
   }
 ]
 
 
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHashHistory(),
   routes
 })
 

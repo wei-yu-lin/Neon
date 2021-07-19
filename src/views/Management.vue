@@ -2,8 +2,8 @@
 
     <div class="row">
       <ScrollBar/>
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <router-view></router-view>
+      <main class="col-lg-10 col-md-9 ms-sm-auto px-md-4">
+        <router-view/>
       </main>
     </div>
 

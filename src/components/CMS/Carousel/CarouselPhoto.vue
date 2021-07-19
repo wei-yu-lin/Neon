@@ -18,20 +18,19 @@
           </td>
           <td class="col-3">{{item.Website}}</td>
           <td class="col-3">
-              <textarea class="form-control overflow-auto" rows="7" v-model="item.Description"></textarea>
+              <textarea class="form-control overflow-auto" rows="9" v-model="item.Description"></textarea>
           </td>
-          <td class="col-2">
-           <div class="container">
-                <button class="btn btn-info" type="button"
-                data-bs-toggle="modal"
-                :data-bs-target="'#id_modifyData'+index"
-                >修改</button>
-                <button class="btn btn-danger" type="button" @click="delData(index)">刪除</button>
-           </div>
-          <CarouseModal
-          :modify-modal=item
-          :index=index
-          />
+          <td class="col-2 align-self-center">
+            <button class="btn btn-info " type="button"
+            data-bs-toggle="modal"
+            :data-bs-target="'#id_modifyData'+index"
+            >修改</button>
+            <button class="btn btn-danger" type="button" @click="delData(index)">刪除</button>
+            <CarouseModal
+            :modify-modal=item
+            :index=index
+            @editComplete="(value,childIdx) => editCompleteHandler(value,childIdx)"
+            />
           </td>
         </tr>
       </tbody>
@@ -41,7 +40,6 @@
 
 
 <script>
-import test from '@/server/test.json'
 import CarouseModal from './CarouseModal.vue'
 
 export default ({
@@ -51,14 +49,25 @@ export default ({
     }
   },
   methods: {
+    getProducts(){
+      const vm = this;
+      vm.$http.get(process.env.VUE_APP_PRODUCT).then((res) => {
+        vm.main = res.data
+      })
+
+    },
     delData(index){
      this.main.splice(index,1)
+    },
+    editCompleteHandler(val,childIdx){
+      const vm = this;
+      console.log(childIdx);
+
+      // vm.$set(vm.main,idx,val)
     }
   },
-  computed: {
-  },
   created() {
-    this.main = test     
+    this.getProducts();
   },
   components: {
     CarouseModal
