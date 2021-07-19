@@ -1,5 +1,5 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import Cookies from 'vue-cookies'
+import VueCookies from 'vue3-cookies'
 import LoginForm from '@/views/LoginForm.vue'
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
@@ -56,7 +56,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   if (to.meta.requireAuth) {
-    const info = Cookies.get('login')
+    const info = VueCookies.get('login')
     if (info) {
       const token = info.token
       // 如果token不為空，且確實有這個欄位則讓路由變更
