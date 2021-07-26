@@ -7,10 +7,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <router-link :class="{'nav-link': true, active: isActive.HomePage}" :to="{name:'HomePage'}">首頁</router-link>
+                <router-link class="nav-link" :to="{name:'HomePage'}">首頁</router-link>
               </li>
               <li class="nav-item">
-                <router-link :class="{'nav-link':true , active: isActive.Management}" :to="{name:'Management'}">後臺管理</router-link>
+                <router-link class="nav-link" :to="{name:'Management'}">後臺管理</router-link>
               </li>
             </ul>
             <login
@@ -25,50 +25,17 @@
 </template>
 
 <script>
-import login from '@/components/MemberSystem/LoginLogout.vue'
-
-export default({
-  data() {
-    return{
-      isActive:{
-        HomePage: false,
-        Management: false
+  import login from '@/components/MemberSystem/LoginLogout.vue'
+  import {ref} from 'vue'
+  export default {
+    setup() {
+      const wannalogin = ref(false);
+      components:[login]
+      return {
+        wannalogin
       }
     }
-  },
-  computed:{
-    wannalogin(){
-      return this.$store.state.wannalogin
-    }
-  },
-  watch:{
-    $route:{
-      handler: function(Val,oldVal){
-        // console.log("Val=",Val.name,"oldVal=",oldVal);w
-        if (Val.name === 'HomePage'){
-          this.isActive.HomePage = true
-          this.isActive.Management = false
-        }
-        else if(Val.name === 'Management'){
-          this.isActive.Management = true
-          this.isActive.HomePage = false
-        }
-        else{
-          this.isActive.HomePage = false
-          this.isActive.Management = false
-        }
-      }
-    },
-  },
-  components:{
-    login
-  },
-  created() {
-    if (this.$cookies.get('login')) {
-      this.$store.dispatch('readUser')
-    }
-  },
-})
+  }
 </script>
 
 

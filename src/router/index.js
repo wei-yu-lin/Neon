@@ -1,5 +1,4 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import VueCookies from 'vue3-cookies'
 import LoginForm from '@/views/LoginForm.vue'
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
@@ -7,10 +6,6 @@ import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
 
 
 const routes = [
-  {
-    path: '*',
-    redirect: '/'
-  },
   {
     path: '/',
     name: 'HomePage',
@@ -74,4 +69,4 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
-export default router
+export default router;

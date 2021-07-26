@@ -23,12 +23,6 @@
 
 export default {
   name: 'LoginLogout',
-  components: {
-  },
-  data() {
-    return {
-    }
-  },
   methods:{
     LogOut(){
       this.$cookies.remove('login');
