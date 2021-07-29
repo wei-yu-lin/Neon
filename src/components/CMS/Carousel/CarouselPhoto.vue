@@ -54,7 +54,6 @@ export default ({
       vm.$http.get(process.env.VUE_APP_PRODUCT).then((res) => {
         vm.main = res.data
       })
-
     },
     delData(index){
      this.main.splice(index,1)
@@ -62,8 +61,6 @@ export default ({
     editCompleteHandler(val,childIdx){
       const vm = this;
       console.log(childIdx);
-
-      // vm.$set(vm.main,idx,val)
     }
   },
   created() {

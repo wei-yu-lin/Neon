@@ -15,6 +15,7 @@
             </ul>
             <login
             :LoginCookies="wannalogin"
+            :username="username"
             />
           </div>
         </div>
@@ -25,14 +26,23 @@
 </template>
 
 <script>
-  import login from '@/components/MemberSystem/LoginLogout.vue'
+  import login from '@/components/MemberSystem/LoginLogout.vue';
+  import {checkLogin} from "@/tools/cookies";
   import {ref} from 'vue'
   export default {
+    components:{
+      login
+    },
     setup() {
-      const wannalogin = ref(false);
-      components:[login]
+        let wannalogin = ref(true);
+        let username = ref("");
+        if (checkLogin().username){
+           wannalogin.value = false;
+           username.value = checkLogin().username
+        }
       return {
-        wannalogin
+        wannalogin,
+        username
       }
     }
   }

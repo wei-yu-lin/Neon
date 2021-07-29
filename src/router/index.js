@@ -1,5 +1,6 @@
-import {createRouter, createWebHashHistory} from 'vue-router'
-import LoginForm from '@/views/LoginForm.vue'
+import {createRouter, createWebHistory} from 'vue-router'
+import {getCookies} from "@/tools/cookies";
+import LoginForm from "@/components/MemberSystem/LoginForm.vue";
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
 import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
@@ -45,25 +46,18 @@ const routes = [
 
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 
 router.beforeEach(async (to, from, next) => {
   if (to.meta.requireAuth) {
-    const info = VueCookies.get('login')
-    if (info) {
-      const token = info.token
-      // 如果token不為空，且確實有這個欄位則讓路由變更
-      if (token.length > 0 || token === undefined) {
+    const info = getCookies("login");
+    if (info.token) {
         next()
-      } else {
-        // 未通過則導回login頁面
+    } else {
         next({ name: 'LoginForm' })
       }
-    } else {
-      next({ name: 'LoginForm' })
-    }
   } else {
     next()
   }
