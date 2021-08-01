@@ -1,4 +1,5 @@
 <template>
+<div class="header-profile">
     <div class="d-flex">
         <router-link v-if="LoginCookies" class="me-2 btn btn-outline-success"
         :to="{ name: 'LoginForm'}">登入</router-link>
@@ -16,6 +17,7 @@
           </ul>
         </div>
     </div>
+  </div>
 
 </template>
 

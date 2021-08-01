@@ -8,41 +8,41 @@ import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'HomePage',
-    component: HomePage
+    path: "/",
+    name: "HomePage",
+    component: HomePage,
   },
   {
-    path: '/login',
-    name: 'LoginForm',
-    component: LoginForm
+    path: "/login",
+    name: "LoginForm",
+    component: LoginForm,
   },
   {
-    path: '/Management',
-    name: 'Management',
-    component: () => import('../views/Management.vue'),
+    path: "/Management",
+    name: "Management",
+    component: () => import("@/components/CMS/Management.vue"),
     meta: { requireAuth: true },
     children: [
       {
-        path: 'CMS/Photo/Manage',
-        name: 'CarouselPhoto',
+        path: "CMS/Photo/Manage",
+        name: "CarouselPhoto",
         component: CarouselPhoto,
-        meta: { requireAuth: true }
+        meta: { requireAuth: true },
       },
       {
-        path: 'CMS/Photo/Add',
-        name: 'AddPhoto',
-        component: () => import('../components/CMS/Carousel/AddPhoto.vue'),
-        meta: { requireAuth: true }
+        path: "CMS/Photo/Add",
+        name: "AddPhoto",
+        component: () => import("../components/CMS/Carousel/AddPhoto.vue"),
+        meta: { requireAuth: true },
       },
       {
-        path: 'profile',
-        name: '個人資料',
-        component: Profile
+        path: "profile",
+        name: "個人資料",
+        component: Profile,
       },
-    ]
-  }
-]
+    ],
+  },
+];
 
 
 const router = createRouter({
@@ -53,7 +53,7 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   if (to.meta.requireAuth) {
     const info = getCookies("login");
-    if (info.token) {
+    if (info) {
         next()
     } else {
         next({ name: 'LoginForm' })

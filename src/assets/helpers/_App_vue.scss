@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+$theme-color: #d89e20 !default;
+$menu-color: rgba(0, 0, 0, 0.55) !default;
+$theme-bg-image: url(https://4kwallpapers.com/images/wallpapers/alpenglow-sunrise-mountain-range-glacier-mountains-green-2112x1188-3725.jpg);
+
+#app {
+  display: flex;
+  //  background-image: $theme-bg-image;
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  max-height: 1080px;
+  max-width: 1920px;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 58px;
+  width: 100%;
+  padding: 0 30px;
+  white-space: nowrap;
+  @media screen and (max-width: 480px) {
+    padding: 0 16px;
+  }
+  &-menu {
+    display: flex;
+    align-items: center;
+    .menu-link {
+      padding: 20px 30px;
+      text-decoration: none;
+      color: $menu-color;
+      border-bottom: 2px solid transparent;
+      transition: 0.3s;
+      @media screen and (max-width: 610px) {
+        &:not(.main-header-link) {
+          display: none;
+        }
+      }
+      &.is-active,
+      &:hover {
+        color: $theme-color;
+        border-bottom: 2px solid $theme-color;
+      }
+    }
+  }
+  .user-navbar{
+    margin-left: 150px;
+  }
+}
+
+.header-profile {
+ display: flex;
+ align-items: center;
+ padding: 0 16px 0 40px;
+ margin-left: auto;
+ flex-shrink: 0;
+ svg {
+  width: 22px;
+  color: #f9fafb;
+  flex-shrink: 0;
+ }
+}
