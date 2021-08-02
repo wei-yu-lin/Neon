@@ -45,23 +45,17 @@
         </div>
       </div>
       <!--底下是地圖 -->
-      <div id="map" class="col-6 d-none d-sm-block h100"></div>
+      <div id="map" ref="map" class="col-6 d-none d-sm-block vh-100"></div>
     </div>
   </div>
 </template>
 
-
-
 <script>
-import { initialize } from '@/tools/googleApi.js'
-import {onBeforeMount} from 'vue'
+import { initMap } from '@/tools/googleApi.js'
 
-export default ({
-  setup(props) {
-    onBeforeMount(() => {
-      // loadScript()
-      // initialize()
-    })
+export default {
+  setup() {
+    initMap()
   }
-})
+};
 </script>
