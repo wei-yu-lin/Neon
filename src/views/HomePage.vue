@@ -36,6 +36,7 @@
                   lead-in to additional content. This content is a little bit
                   longer.
                 </p>
+                <button @click="get">按我</button>
                 <p class="card-text">
                   <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
@@ -49,13 +50,19 @@
     </div>
   </div>
 </template>
-
 <script>
-import { initMap } from '@/tools/googleApi.js'
+
+import { initPage,getGeolocation } from '@/tools/googleApi.js'
 
 export default {
   setup() {
-    initMap()
+    const get = () => {
+      getGeolocation()
+    }
+    initPage()
+    return{
+      get
+    }
   }
 };
 </script>

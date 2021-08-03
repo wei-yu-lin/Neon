@@ -3,6 +3,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import  'bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSpinner, faImages, faHotel, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import router from './router'
@@ -13,6 +14,7 @@ const app = createApp({
     return h(App)
   }
 })
+
 
 app.use(VueAxios, axios);
 app.use(router);
