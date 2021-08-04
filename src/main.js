@@ -1,6 +1,6 @@
 import { createApp,h } from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
 import  'bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -16,7 +16,7 @@ const app = createApp({
 })
 
 
-app.use(VueAxios, axios);
+// app.use(VueAxios, axios);
 app.use(router);
 app.component('font-awesome-icon', FontAwesomeIcon);
 library.add(faSpinner, faImages, faHotel, faShoppingCart);

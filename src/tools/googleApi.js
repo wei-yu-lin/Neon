@@ -27,6 +27,7 @@ const initPage = () => {
     });
 };
 
+
 const getGeolocation = () => {
   const infoWindow = new google.maps.InfoWindow();
   loader.load().then((google) => {

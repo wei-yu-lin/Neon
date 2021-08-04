@@ -1,42 +1,18 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6 ">
-        <div class="card mb-1">
+      <div class="col-sm-6">
+        <div v-for="(data,index) in hotel_data" :key="index" class="card mb-1">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="https://fakeimg.pl/210x170/" />
+              <img :src="data.Picture1" class="img-fluid ">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{data.Name}}</h5>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  {{data.Description}}
                 </p>
-                <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--第二張card -->
-        <div class="card mb-3">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="https://fakeimg.pl/210x170/" />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <button @click="get">按我</button>
                 <p class="card-text">
                   <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
@@ -51,18 +27,19 @@
   </div>
 </template>
 <script>
-
-import { initPage,getGeolocation } from '@/tools/googleApi.js'
-
+// import { initPage, getGeolocation } from "@/tools/googleApi.js";
+import axios from "axios";
 export default {
-  setup() {
+  async setup() {
+    const hotel_data = (await axios.get(process.env.VUE_APP_PRODUCT)).data;
     const get = () => {
-      getGeolocation()
-    }
-    initPage()
-    return{
-      get
-    }
-  }
+      getGeolocation();
+    };
+    // initPage();
+    return {
+      get,
+      hotel_data
+    };
+  },
 };
 </script>

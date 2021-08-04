@@ -41,7 +41,7 @@
 
 <script>
 import CarouseModal from './CarouseModal.vue'
-
+import axios from 'axios'
 export default ({
   data() {
     return {
@@ -49,12 +49,12 @@ export default ({
     }
   },
   methods: {
-    getProducts(){
-      const vm = this;
-      vm.$http.get(process.env.VUE_APP_PRODUCT).then((res) => {
-        vm.main = res.data
-      })
-    },
+    // getProducts(){
+    //   const vm = this;
+    //   vm.$http.get(process.env.VUE_APP_PRODUCT).then((res) => {
+    //     vm.main = res.data
+    //   })
+    // },
     delData(index){
      this.main.splice(index,1)
     },
@@ -63,11 +63,17 @@ export default ({
       console.log(childIdx);
     }
   },
-  created() {
-    this.getProducts();
-  },
+  // created() {
+  //   this.getProducts();
+  // },
   components: {
     CarouseModal
+  },
+  setup(props) {
+    const po = axios.get(process.env.VUE_APP_PRODUCT).then((res) => {
+        return res.data
+      })
+      console.log(po);
   }
 })
 </script>
