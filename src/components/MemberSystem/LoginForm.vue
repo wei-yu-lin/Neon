@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     signin () {
+      console.log(process.env.VUE_APP_LOGIN);
       let re = ".com"
       const token = 'asds32adsavrAS3Fadf5567'
       const user_id = this.user.user_id
