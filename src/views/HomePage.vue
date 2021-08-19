@@ -27,19 +27,26 @@
   </div>
 </template>
 <script>
-import { mapInit, getGeolocation } from "@/tools/googleApi.js";
+import { mapInit, setMarkerAnimation ,addMarker} from "@/tools/googleApi.js";
 import axios from "axios";
+import {onBeforeMount,onMounted,reactive,watch} from 'vue'
 export default {
-  async setup() {
-    const hotelData = (await axios.get(process.env.VUE_APP_PRODUCT)).data;
-    mapInit(hotelData);
+  setup() {
+    const hotelData = reactive([])
+    onBeforeMount(async () => {
+      hotelData.push(...(await axios.get(process.env.VUE_APP_PRODUCT)).data)
+    })
+    onMounted(() => {
+      mapInit()
+    })
+    watch(hotelData,addMarker)
     const hoverListItem = (index) => {
       const coords = hotelData[index].coordinates;
-      getGeolocation(coords,index,false);
+      setMarkerAnimation(coords,index,false);
     };
     const leaveListItem = (index) => {
       const coords = hotelData[index].coordinates;
-      getGeolocation(coords,index,true);
+      setMarkerAnimation(coords,index,true);
     };
 
     return {
@@ -47,9 +54,6 @@ export default {
       leaveListItem,
       hotelData,
     };
-  },
-  beforeUnmount() {
-
   }
 };
 </script>

@@ -32,7 +32,7 @@
 <script>
 import login from "@/components/MemberSystem/LoginLogout.vue";
 import { checkLogin } from "@/tools/cookies";
-import { ref } from "vue";
+import { ref,provide } from "vue";
 
 export default {
   components: {
