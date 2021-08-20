@@ -14,6 +14,7 @@
                   <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
                 <a href="#" class="stretched-link"
+                @click = "openCartForm(index)"
                 @mouseover="hoverListItem(index)"
                 @mouseleave="leaveListItem(index)"></a>
               </div>
@@ -30,16 +31,19 @@
 import { mapInit, setMarkerAnimation ,addMarker} from "@/tools/googleApi.js";
 import axios from "axios";
 import {onBeforeMount,onMounted,reactive,watch} from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 export default {
   setup() {
+    const router = useRouter()
+    const route = useRoute()
     const hotelData = reactive([])
     onBeforeMount(async () => {
       hotelData.push(...(await axios.get(process.env.VUE_APP_PRODUCT)).data)
     })
     onMounted(() => {
+      watch(hotelData,addMarker)
+      })
       mapInit()
-    })
-    watch(hotelData,addMarker)
     const hoverListItem = (index) => {
       const coords = hotelData[index].coordinates;
       setMarkerAnimation(coords,index,false);
@@ -48,10 +52,15 @@ export default {
       const coords = hotelData[index].coordinates;
       setMarkerAnimation(coords,index,true);
     };
-
+    const openCartForm = (index) => {
+      router.push({
+        name: 'CartsMain'
+      })
+    };
     return {
       hoverListItem,
       leaveListItem,
+      openCartForm,
       hotelData,
     };
   }

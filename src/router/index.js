@@ -4,6 +4,7 @@ import LoginForm from "@/components/MemberSystem/LoginForm.vue";
 import HomePage from '@/views/HomePage.vue'
 import Profile from '@/components/MemberSystem/Profile.vue'
 import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
+import CartsMain from '@/components/Carts/CartsMain.vue'
 
 
 const routes = [
@@ -11,6 +12,11 @@ const routes = [
     path: "/",
     name: "HomePage",
     component: HomePage,
+  },
+  {
+    path: "/Carts/",
+    name: "CartsMain",
+    component: CartsMain,
   },
   {
     path: "/login",

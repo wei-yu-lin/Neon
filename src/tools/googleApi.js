@@ -1,5 +1,9 @@
-import { Loader } from "@googlemaps/js-api-loader";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  Loader
+} from "@googlemaps/js-api-loader";
+import {
+  faMapMarkerAlt
+} from "@fortawesome/free-solid-svg-icons";
 const loader = new Loader({
   apiKey: "AIzaSyB5fGMTq7egraWkSXhZhFXG_xgPyv1iUDQ",
   version: "weekly",
@@ -20,8 +24,6 @@ let refMap;
 const markers = [];
 const mapInit = () => {
   markers.splice(0, markers.length);
-  // debugger;
-
   loader.load().then((google) => {
     const map = new google.maps.Map(document.getElementById("map"), mapOptions);
     refMap = map;
@@ -34,33 +36,44 @@ const setMarkerAnimation = (coords, index, isLeave) => {
   } else {
     markers[index].setAnimation(google.maps.Animation.BOUNCE);
     markers[index].setZIndex(3);
-    refMap.setCenter({ lat: coords[0], lng: coords[1] });
+    refMap.setCenter({
+      lat: coords[0],
+      lng: coords[1]
+    });
   }
 };
 
 const addMarker = (newVal) => {
   for (let i = 0; i < newVal.length; i++) {
     const coords = newVal[i].coordinates;
-    const latLng = new google.maps.LatLng(coords[0], coords[1]);
-    markers.push(
-      new google.maps.Marker({
-        position: latLng,
-        map: refMap,
-        animation: google.maps.Animation.DROP,
-        icon: {
-          path: faMapMarkerAlt.icon[4],
-          fillColor: "#ffbd08",
-          fillOpacity: 1,
-          anchor: new google.maps.Point(
-            faMapMarkerAlt.icon[0] / 2, // width
-            faMapMarkerAlt.icon[1] // height
-          ),
-          strokeWeight: 0.5,
-          scale: 0.09,
-        },
-      })
-    );
+    setTimeout(() => {
+      markers.push(
+        new google.maps.Marker({
+          position: {
+            lat: coords[0],
+            lng: coords[1]
+          },
+          map: refMap,
+          animation: google.maps.Animation.DROP,
+          icon: {
+            path: faMapMarkerAlt.icon[4],
+            fillColor: "#ffbd08",
+            fillOpacity: 1,
+            anchor: new google.maps.Point(
+              faMapMarkerAlt.icon[0] / 2, // width
+              faMapMarkerAlt.icon[1] // height
+            ),
+            strokeWeight: 0.5,
+            scale: 0.09,
+          },
+        })
+      );
+    }, 10)
   }
 };
 
-export { mapInit, setMarkerAnimation, addMarker };
+export {
+  mapInit,
+  setMarkerAnimation,
+  addMarker
+};
