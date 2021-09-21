@@ -29,5 +29,5 @@
 export default {};
 </script>
 <style lang="scss" scoped>
-@import "@/assets/helpers/_dashboard.scss";
+@import "@/assets/sass/custom/_dashboard.scss";
 </style>

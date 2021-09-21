@@ -37,6 +37,7 @@
 
 <script>
 import {setCookies} from "@/tools/cookies";
+import axios from "axios";
 export default {
   name: 'LoginForm',
   data () {
@@ -49,13 +50,12 @@ export default {
   },
   methods: {
     signin () {
-      console.log(process.env.VUE_APP_LOGIN);
       let re = ".com"
       const token = 'asds32adsavrAS3Fadf5567'
       const user_id = this.user.user_id
       const password = this.user.password
       if (user_id.search(re) > 0) {
-        this.$http.post(process.env.VUE_APP_LOGIN, {
+        axios.post(process.env.VUE_APP_LOGIN, {
           user_id: user_id,
           password: password
         }).then((res) => {

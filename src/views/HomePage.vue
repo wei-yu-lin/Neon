@@ -53,8 +53,11 @@ export default {
       setMarkerAnimation(coords,index,true);
     };
     const openCartForm = (index) => {
+      const Zone = hotelData[index].Zone;
+      const Name = hotelData[index].Name;
       router.push({
-        name: 'CartsMain'
+        name: 'CartsMain',
+        params: {Zone,Name,index}
       })
     };
     return {

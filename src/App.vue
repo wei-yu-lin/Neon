@@ -3,13 +3,13 @@
     <nav class=" navbar navbar-expand-lg navbar-light border bg-light">
       <div class="container-fluid header">
         <div class="header-menu navbar-collapse">
-          <a class="navbar-brand" href="#">Neon</a>
+          <router-link class="navbar-brand" :to="{ name: 'HomePage'}">Neon</router-link>
           <div class="user-navbar">  <!--需要調整 -->
             <router-link class="menu-link " :to="{ name: 'HomePage' }"
-              ><font-awesome-icon  icon="hotel"/>住宿</router-link
+              ><font-awesome-icon icon="hotel"/>住宿</router-link
             >
             <router-link class="menu-link " :to="{ name: 'HomePage' }"
-              ><font-awesome-icon  icon="shopping-cart"/>購物車</router-link
+              ><font-awesome-icon icon="shopping-cart"/>購物車</router-link
             >
             <router-link class="menu-link " :to="{ name: 'Management' }"
               >後臺管理</router-link>
@@ -55,5 +55,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/main.scss";
+@import "@/assets/sass/main.scss";
 </style>

@@ -43,6 +43,8 @@ const setMarkerAnimation = (coords, index, isLeave) => {
   }
 };
 
+
+
 const addMarker = (newVal) => {
   for (let i = 0; i < newVal.length; i++) {
     const coords = newVal[i].coordinates;

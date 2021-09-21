@@ -1,11 +1,10 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import {getCookies} from "@/tools/cookies";
+import { createRouter, createWebHistory } from "vue-router";
+import { getCookies } from "@/tools/cookies";
 import LoginForm from "@/components/MemberSystem/LoginForm.vue";
-import HomePage from '@/views/HomePage.vue'
-import Profile from '@/components/MemberSystem/Profile.vue'
-import CarouselPhoto from '@/components/CMS/Carousel/CarouselPhoto.vue'
-import CartsMain from '@/components/Carts/CartsMain.vue'
-
+import HomePage from "@/views/HomePage.vue";
+import Profile from "@/views/Profile.vue";
+import CarouselPhoto from "@/views/CMS//CarouselPhoto.vue";
+import CartsMain from "@/components/Carts/CartsMain.vue";
 
 const routes = [
   {
@@ -14,7 +13,7 @@ const routes = [
     component: HomePage,
   },
   {
-    path: "/Carts/",
+    path: "/Carts/:Zone/:Name/:index",
     name: "CartsMain",
     component: CartsMain,
   },
@@ -26,7 +25,7 @@ const routes = [
   {
     path: "/Management",
     name: "Management",
-    component: () => import("@/components/CMS/Management.vue"),
+    component: () => import("@/views/Management.vue"),
     meta: { requireAuth: true },
     children: [
       {
@@ -38,7 +37,7 @@ const routes = [
       {
         path: "CMS/Photo/Add",
         name: "AddPhoto",
-        component: () => import("../components/CMS/Carousel/AddPhoto.vue"),
+        component: () => import("../views/CMS//AddPhoto.vue"),
         meta: { requireAuth: true },
       },
       {
@@ -50,23 +49,22 @@ const routes = [
   },
 ];
 
-
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
 router.beforeEach(async (to, from, next) => {
   if (to.meta.requireAuth) {
     const info = getCookies("login");
     if (info) {
-        next()
+      next();
     } else {
-        next({ name: 'LoginForm' })
-      }
+      next({ name: "LoginForm" });
+    }
   } else {
-    next()
+    next();
   }
-})
+});
 
 export default router;

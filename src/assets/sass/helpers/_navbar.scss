@@ -10,18 +10,17 @@
 
 
 // Navbar
-//
-// Provide a static navbar from which we expand to create full-width, fixed, and
-// other navbar variations.
+$navbarXPadding: 30px;
 
 .navbar {
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
+
   align-items: center;
   justify-content: space-between; // space out brand from logo
   height: 78px;
-  padding: 0 30px;
+  padding: 0 $navbarXPadding;
   @include gradient-bg();
 
   // Because flex properties aren't inherited, we need to redeclare these first
@@ -65,6 +64,25 @@
   }
 }
 
+.navbar-barnd-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.navbar-barnd-line::after {
+  background-color: rgba(0,0,0,.16);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 2px;
+  z-index: 1;
+  padding: 0 ;
+}
 
 // Navbar nav
 //
@@ -88,30 +106,23 @@
 }
 
 
-// Navbar text
-//
-//
-
 .navbar-text {
   padding-top: $nav-link-padding-y;
   padding-bottom: $nav-link-padding-y;
 }
 
 
-// Responsive navbar
-//
-// Custom styles for responsive collapsing and toggling of navbar contents.
-// Powered by the collapse Bootstrap JavaScript plugin.
-
-// When collapsed, prevent the toggleable navbar contents from appearing in
-// the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
-// on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
   // For always expanded or extra full navbars, ensure content aligns itself
   // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
+  & svg {
+  margin-right: 1rem;
+  width: 22px;
+  flex-shrink: 0;
+ }
 }
 
 // Button for toggling the navbar when in its collapsed state
@@ -303,4 +314,13 @@
       color: $navbar-dark-active-color;
     }
   }
+}
+
+.header-profile {
+ display: flex;
+ align-items: center;
+ padding: 0 16px 0 40px;
+ margin-left: auto;
+ flex-shrink: 0;
+
 }

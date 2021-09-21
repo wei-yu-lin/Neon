@@ -1,0 +1,46 @@
+.page-outward{
+  width:50%;
+}
+.page-outward .page-content{
+    position: unset;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    justify-content: center;
+    gap: 0.325rem;
+    width: 100%;
+    margin-top: 0.325rem;
+}
+
+.carousel-img{
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+}
+
+
+	.carousel__slide {
+
+		&--visible {
+			position: relative;
+			visibility: visible;
+			opacity: 1;
+			z-index: 1;
+		}
+		&--thumbnail {
+			position: relative;
+			filter: brightness(0.3);
+			transition: filter 0.25s linear, transform 0.15s linear;
+			&:hover {
+				cursor: pointer;
+				filter: brightness(1);
+				z-index: 1;
+			}
+		}
+		&--visible.carousel__slide--thumbnail {
+			filter: brightness(0.8);
+			animation: none;
+		}
+	}
+
+  

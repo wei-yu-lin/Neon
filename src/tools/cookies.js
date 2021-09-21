@@ -1,19 +1,32 @@
 const getCookies = (names) => {
   const all_cookie = `; ${document.cookie}`;
   const part_cookie = all_cookie.split(`; ${names}=`);
-  if (part_cookie.length === 2){
-   const json_cookie = JSON.parse(part_cookie.pop());
-   return json_cookie
+  if ((part_cookie.length === 2) & (part_cookie[1] != '')) {
+    const jsonCookie = JSON.parse(part_cookie.pop());
+    return jsonCookie;
   }
-}
+};
 
-
-const setCookies = (names,value) => {
+const setCookies = (names, value) => {
   document.cookie = `${names}=${JSON.stringify(value)}`;
-}
+};
 
-const checkLogin = () =>{
-  const json_cookie = getCookies('login');
-  return json_cookie
-}
-export { getCookies, setCookies, checkLogin };
+const delCookies = (names) => {
+  if (names == 'login'){
+   const jsonCookie  = getCookies(names);
+    const { user_id, password, username, token } = jsonCookie;
+   document.cookie =
+     names +
+     "=" +
+     (user_id ? ";user_id=" + user_id : "") +
+     (password ? ";password=" + password : "") +
+     (username ? ";username=" + username : "") +
+     (token ? ";token=" + token : "");
+  }
+};
+
+const checkLogin = () => {
+  const jsonCookie = getCookies("login");
+  return jsonCookie;
+};
+export { getCookies, setCookies, checkLogin, delCookies };

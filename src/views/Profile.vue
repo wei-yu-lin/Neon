@@ -18,7 +18,7 @@
           <label class="col-sm-2 col-3 col-form-label">密碼</label>
           <div class="col-sm-4 col-9">
             <div class="input-group has-validation">
-              <input type="password" id="password" class="form-control" :value="$store.state.user.password" required>
+              <input type="password" id="password" class="form-control" :value="passWord" required>
               <div class="invalid-feedback">
                 密碼不能為空
               </div>
@@ -37,7 +37,7 @@
           <div class="col-sm-6 col-9">
             <div class="input-group">
               <span class="input-group-text" id="basic-addon1">名子</span>
-              <input type="text" class="form-control" aria-label="使用者名稱" :value="user.username">
+              <input type="text" class="form-control" aria-label="使用者名稱" :value="userName">
             </div>
           </div>
       </div>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import {getCookies} from '@/tools/cookies';
 export default {
   methods: {
     done(){
@@ -79,9 +80,10 @@ export default {
   computed:{
     profile_userId:{
       get(){
-        const userId = this.user.user_id
+        const userId = this.userId
         if (userId){
           let Arr_user = userId.split(/[@.]/)
+
           return Arr_user
         }
       },
@@ -89,7 +91,9 @@ export default {
     }
   },
   created(){
-    this.user = this.$store.state.user
-  },
+    this.userId = getCookies('login').user_id
+    this.userName = getCookies('login').username
+    this.passWord = getCookies('login').password
+  }
 }
 </script>
