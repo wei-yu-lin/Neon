@@ -63,7 +63,7 @@ export default {
             const username = res.data.username
             const login_cookie = {user_id,password,username,token}
             setCookies('login',login_cookie)
-            this.$router.push({name: 'Management'})
+            this.$router.push({name: 'Admin'})
           }
         },(reject) =>{
           console.log(reject);

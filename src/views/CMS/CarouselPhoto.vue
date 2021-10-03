@@ -11,6 +11,7 @@
         </tr>
       </thead>
       <tbody>
+
         <tr v-for="(item,index) in main" :key="index+item">
           <th class="col-1" scope="row">{{index}}</th>
           <td class="col-3">
@@ -42,19 +43,9 @@
 <script>
 import CarouseModal from './CarouseModal.vue'
 import axios from 'axios'
+import {reactive,onBeforeMount} from 'vue'
 export default ({
-  data() {
-    return {
-      main:[]
-    }
-  },
   methods: {
-    // getProducts(){
-    //   const vm = this;
-    //   vm.$http.get(process.env.VUE_APP_PRODUCT).then((res) => {
-    //     vm.main = res.data
-    //   })
-    // },
     delData(index){
      this.main.splice(index,1)
     },
@@ -63,17 +54,18 @@ export default ({
       console.log(childIdx);
     }
   },
-  // created() {
-  //   this.getProducts();
-  // },
   components: {
     CarouseModal
   },
-  setup(props) {
-    const po = axios.get(process.env.VUE_APP_PRODUCT).then((res) => {
-        return res.data
-      })
-      console.log(po);
+  setup() {
+    const main = reactive([]);
+    onBeforeMount(async () => {
+      main.push(...(await axios.get(process.env.VUE_APP_PRODUCT)).data)
+    })
+
+    return {
+      main
+    }
   }
 })
 </script>

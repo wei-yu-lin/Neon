@@ -1,0 +1,28 @@
+.accommodation-footer{
+  -webkit-box-flex: 1 !important;
+  -webkit-box-align: end !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  flex-grow: 1 !important;
+  margin-top: -10px !important;
+  &>.star{
+    flex: 1 0 auto;
+    margin-right: 12px;
+  }
+  &>.price{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: auto !important;
+    &::before{
+      content: '$ ';
+    }
+    &::after{
+      content: ' /晚';
+    }
+  }
+}
+
+.aaa {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}

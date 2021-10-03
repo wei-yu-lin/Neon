@@ -8,7 +8,8 @@ import {
   faImages,
   faHotel,
   faShoppingCart,
-  faUser
+  faUser,
+  faStar
 } from "@fortawesome/free-solid-svg-icons";
 import router from "./router";
 import App from "./App.vue";
@@ -21,5 +22,5 @@ const app = createApp({
 
 app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
-library.add(faSpinner, faImages, faHotel, faShoppingCart, faUser);
+library.add(faSpinner, faImages, faHotel, faShoppingCart, faUser, faStar);
 app.mount("#app");

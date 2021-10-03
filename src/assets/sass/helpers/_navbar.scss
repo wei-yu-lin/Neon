@@ -56,11 +56,24 @@ $navbarXPadding: 30px;
   margin-right: $navbar-brand-margin-end;
   @include font-size($navbar-brand-font-size);
   text-decoration: if($link-decoration == none, null, none);
+  color: azure;
   white-space: nowrap;
-
-  &:hover,
-  &:focus {
+  @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+  &:hover {
     text-decoration: if($link-hover-decoration == underline, none, null);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
 }
 
@@ -215,15 +228,6 @@ $navbarXPadding: 30px;
 
 // Dark links against a light background
 .navbar-light {
-  .navbar-brand {
-    color: $navbar-light-brand-color;
-
-    &:hover,
-    &:focus {
-      color: $navbar-light-brand-hover-color;
-    }
-  }
-
   .navbar-nav {
     .nav-link {
       color: $navbar-light-color;

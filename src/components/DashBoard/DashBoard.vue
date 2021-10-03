@@ -4,7 +4,13 @@
       id="sidebarMenu"
       class="col-lg-2 col-md-3 d-md-block bg-light sidebar collapse"
     >
-      <div class="position-sticky pt-3">
+      <div class="header justify-content-center navbar-brand">
+        <router-link class="text-decoration-none " :to="{ name: 'Accommodation' }">
+          Neon
+        </router-link>
+      </div>
+
+      <div class="position-sticky">
         <div class="dropdown">
           <button
             class="btn btn-secondary dropdown-toggle col-12"
@@ -20,12 +26,14 @@
                 class="list-group-item list-group-item-action text-center"
                 :to="{ name: 'AddPhoto' }"
               >
-                <font-awesome-icon  icon="images"/> 新增輪播圖片
+                <font-awesome-icon icon="images" /> 新增輪播圖片
               </router-link>
               <router-link
                 class="list-group-item list-group-item-action text-center"
                 :to="{ name: 'CarouselPhoto' }"
-                > <font-awesome-icon  icon="images" pulse/> 輪播圖片管理</router-link
+              >
+                <font-awesome-icon icon="images" pulse />
+                輪播圖片管理</router-link
               >
             </div>
           </div>
@@ -54,6 +62,20 @@
     </div>
   </div>
 </template>
+
+<script>
+import { ref } from "vue";
+export default {
+  setup() {
+    const logo = ref(
+      "https://demos.creative-tim.com/vue-argon-dashboard-pro/img/brand/green.png"
+    );
+    return {
+      logo,
+    };
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/sass/custom/_dashboard.scss";
