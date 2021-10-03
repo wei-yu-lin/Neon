@@ -62,24 +62,15 @@
           </div>
         </div>
       </div>
-      <!--底下是地圖 -->
-      <div
-        id="map"
-        ref="map"
-        class="col-6 d-none d-sm-block vh-100 position-fixed start-50 end-0 "
-      ></div>
     </div>
   </div>
 </template>
 <script>
-import CartsMain from "@/views/Carts/CartsMain.vue";
-import { useMap } from "@/tools/googleApi.js";
-import { onBeforeMount, onMounted, reactive, watch, inject } from "vue";
+
+import {  onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
+import { useMap } from "@/tools/googleApi.js";
 export default {
-  components: {
-    CartsMain,
-  },
   setup() {
     const router = useRouter();
 
@@ -88,7 +79,7 @@ export default {
     const hotelData = inject('hotelData');
      onMounted(async () => {
       console.log("hekkoi");
-      const {addMarker,setMarkerAnimation} = await useMap();
+      const {setMarkerAnimation} = await useMap();
       hoverListItem = (index) => {
         const coords = hotelData[index].coordinates;
         setMarkerAnimation(coords, index, false);
@@ -97,10 +88,7 @@ export default {
         const coords = hotelData[index].coordinates;
         setMarkerAnimation(coords, index, true);
       };
-
-
-      watch(hotelData, addMarker,{deep:true});
-    });
+   });
 
 
 

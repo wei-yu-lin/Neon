@@ -14,7 +14,7 @@ let HomePage = {
     {
       path: "/Accommodation",
       name: "Accommodation",
-      component: () => import("@/views/Carts/Accommodation.vue"),
+      component: () => import("@/views/Accommodation/Accommodation.vue"),
     },
     {
       path: "/Carts/:Zone/:id",
