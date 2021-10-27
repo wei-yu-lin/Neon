@@ -22,13 +22,13 @@ const mapOptions = {
 export const useMap = async () =>{
 
     const markers = [];
+
     markers.splice(0, markers.length);
     const google = await loader.load()
-
     const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
 
     const addMarker = (newVal) => {
-      console.log("heklllo");
       for (let i = 0; i < newVal.length; i++) {
         const coords = newVal[i].coordinates;
         setTimeout(() => {
@@ -38,7 +38,7 @@ export const useMap = async () =>{
                 lat: coords[0],
                 lng: coords[1],
               },
-              map: refMap,
+              map: map,
               animation: google.maps.Animation.DROP,
               icon: {
                 path: faMapMarkerAlt.icon[4],
@@ -64,7 +64,7 @@ export const useMap = async () =>{
       } else {
         markers[index].setAnimation(google.maps.Animation.BOUNCE);
         markers[index].setZIndex(3);
-        refMap.setCenter({
+        map.setCenter({
           lat: coords[0],
           lng: coords[1],
         });

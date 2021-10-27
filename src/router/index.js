@@ -8,14 +8,8 @@ import CartsMain from "@/views/Carts/CartsMain.vue";
 let HomePage = {
   path: "/",
   name: "HomePage",
-  redirect: "/Accommodation",
   component: () => import("@/layout/client.vue"),
   children: [
-    {
-      path: "/Accommodation",
-      name: "Accommodation",
-      component: () => import("@/views/Accommodation/Accommodation.vue"),
-    },
     {
       path: "/Carts/:Zone/:id",
       name: "CartsMain",

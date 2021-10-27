@@ -3,10 +3,10 @@
     <nav class=" navbar navbar-expand-lg navbar-light border bg-light">
       <div class="container-fluid header">
         <div class="header-menu navbar-collapse">
-          <router-link class="navbar-brand" :to="{ name: 'Accommodation' }"
+          <router-link class="navbar-brand" :to="{ name: 'HomePage' }"
             >Neon</router-link>
           <div class="user-navbar">
-            <router-link class="menu-link " :to="{ name: 'Accommodation' }"
+            <router-link class="menu-link " :to="{ name: 'HomePage' }"
               ><font-awesome-icon icon="hotel" />住宿</router-link
             >
             <a class="menu-link ">

@@ -6,15 +6,15 @@
   />
 </template>
 <script>
-import { onMounted, watch, inject } from "vue";
-import { useMap } from "@/tools/googleApi.js";
+// import { useMap } from "@/tools/googleApi.js";
 export default {
   setup() {
-    const hotelData = inject("hotelData");
-    onMounted(async () => {
-      const { addMarker } = await useMap();
-      watch(hotelData, addMarker, { deep: true });
-    });
+    // const hotelData = inject("hotelData");
+    // onMounted(async () => {
+    //   const { addMarker } = await useMap();
+    //   watch(hotelData, addMarker, { deep: true });
+
+    // });
   },
 };
 </script>

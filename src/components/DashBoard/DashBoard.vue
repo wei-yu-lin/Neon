@@ -5,7 +5,7 @@
       class="col-lg-2 col-md-3 d-md-block bg-light sidebar collapse"
     >
       <div class="header justify-content-center navbar-brand">
-        <router-link class="text-decoration-none " :to="{ name: 'Accommodation' }">
+        <router-link class="text-decoration-none " :to="{ name: 'HomePage' }">
           Neon
         </router-link>
       </div>
