@@ -69,32 +69,36 @@
 </template>
 <script>
 import AccGoogleMap from "@/views/Accommodation/AccGoogleMap";
-import { onBeforeMount,onUpdated, inject, watch,nextTick } from "vue";
+import { onBeforeMount,onMounted, inject, watch,nextTick } from "vue";
 import { useRouter } from "vue-router";
-import { useMap } from "@/tools/googleApi.js";
+import { addMarker,setMarkerAnimation,initMap } from "@/tools/googleApi.js";
+
 export default {
   components: {
     AccGoogleMap,
   },
-  setup() {
+  async setup() {
     const router = useRouter();
-    let hoverListItem,leaveListItem;
-
     const hotelData = inject("hotelData");
-    onBeforeMount(async () => {
-      const { setMarkerAnimation, addMarker } = await useMap();
-      watch(hotelData, addMarker, { deep: true });
-      await nextTick()
 
-      hoverListItem = (index) => {
-        const coords = hotelData[index].coordinates;
-        setMarkerAnimation(coords, index, false);
-      }
-      leaveListItem = (index) => {
-        const coords = hotelData[index].coordinates;
-         setMarkerAnimation(coords, index, true);
-      }
-    });
+    onMounted(() => {
+      initMap()
+    })
+
+
+
+    watch(hotelData, addMarker, { deep: true });
+
+
+    const hoverListItem = (index) => {
+      const coords = hotelData[index].coordinates;
+      setMarkerAnimation(coords, index, false);
+    }
+    const leaveListItem = (index) => {
+      const coords = hotelData[index].coordinates;
+        setMarkerAnimation(coords, index, true);
+    }
+
 
     const openCartForm = (index) => {
       const Zone = hotelData[index].Zone;

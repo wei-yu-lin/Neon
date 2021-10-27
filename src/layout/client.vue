@@ -1,7 +1,16 @@
 <template>
   <base-navbar/>
   <main>
-    <AccItemList/>
+     <Suspense>
+    <template #default>
+      <!-- <router-view /> -->
+      <AccItemList/>
+    </template>
+    <template #fallback>
+      Loading....
+    </template>
+  </Suspense>
+
   </main>
 </template>
 <script>

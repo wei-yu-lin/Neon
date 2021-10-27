@@ -21,14 +21,7 @@
       </div>
     </nav>
   </header>
-  <Suspense>
-    <template #default>
-      <router-view />
-    </template>
-    <template #fallback>
-      Loading....
-    </template>
-  </Suspense>
+
 </template>
 <script>
 import login from "@/components/MemberSystem/LoginLogout.vue";
